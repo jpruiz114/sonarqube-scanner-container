@@ -1,11 +1,47 @@
-# sonarqube-scanner-container
+# SonarQube Scanner Container
 
-Docker container to run the SonarQube server and facilitate scanning vulnerabilities and finding security hotspots.
+Docker container with SonarQube 9.9.8 Community Edition, Gradle 7.6, and SonarQube Scanner CLI 6.0.0 for code analysis. All project management and scanning is handled by the [SonarQube Project Scanner](../sonarqube-project-scanner/) Java application.
 
-How to build this Docker image?
+## Build
 
-`docker build -t jpruiz114/sonarqube-with-sonarscanner .`
+```bash
+docker build -t jpruiz114/sonarqube-with-sonarscanner .
+```
 
-How to push it to Docker.io?
+## Run
 
-`docker push jpruiz114/sonarqube-with-sonarscanner:latest`
+```bash
+# Default port
+docker run -d --name sonarqube-scanner \
+  -p 9000:9000 \
+  jpruiz114/sonarqube-with-sonarscanner
+
+# Alternative port if 9000 is in use
+docker run -d --name sonarqube-scanner \
+  -p 9001:9000 \
+  jpruiz114/sonarqube-with-sonarscanner
+```
+
+**Access**: `http://localhost:9000` (or `http://localhost:9001`)  
+**Wait**: 30-60 seconds for startup
+
+## Publish to Docker Hub
+
+```bash
+# Tag and push latest
+docker tag jpruiz114/sonarqube-with-sonarscanner jpruiz114/sonarqube-with-sonarscanner:latest
+docker push jpruiz114/sonarqube-with-sonarscanner:latest
+
+# Tag and push specific version
+docker tag jpruiz114/sonarqube-with-sonarscanner jpruiz114/sonarqube-with-sonarscanner:9.9.8
+docker push jpruiz114/sonarqube-with-sonarscanner:9.9.8
+```
+
+## Usage
+
+Use the [SonarQube Project Scanner](../sonarqube-project-scanner/) Java application to:
+- Create projects and generate authentication tokens
+- Scan your code and generate reports  
+- Export analysis results to CSV files
+
+The Java application handles all interaction with this container via SonarQube's REST API.
