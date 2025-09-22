@@ -23,5 +23,10 @@ RUN mkdir /downloads/sonarqube -p \
 
 ENV PATH="$PATH:/opt/sonar-scanner/bin"
 
+# Memory configuration for SonarQube and Elasticsearch
+ENV SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true
+ENV ES_JAVA_OPTS="-Xms2g -Xmx8g"
+ENV SONAR_JAVA_OPTS="-Xms2g -Xmx4g"
+
 # Switch back to sonarqube user for security
 USER sonarqube
