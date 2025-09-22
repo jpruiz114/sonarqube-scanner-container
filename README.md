@@ -31,10 +31,6 @@ docker run -d --name sonarqube-scanner \
 # Tag and push latest
 docker tag jpruiz114/sonarqube-with-sonarscanner jpruiz114/sonarqube-with-sonarscanner:latest
 docker push jpruiz114/sonarqube-with-sonarscanner:latest
-
-# Tag and push specific version
-docker tag jpruiz114/sonarqube-with-sonarscanner jpruiz114/sonarqube-with-sonarscanner:9.9.8
-docker push jpruiz114/sonarqube-with-sonarscanner:9.9.8
 ```
 
 ## Usage
