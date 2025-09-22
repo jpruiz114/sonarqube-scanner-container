@@ -1,6 +1,6 @@
 # SonarQube Scanner Container
 
-Docker container with SonarQube 9.9.8 Community Edition, Gradle 7.6, and SonarQube Scanner CLI 6.0.0 for code analysis. All project management and scanning is handled by the [SonarQube Project Scanner](../sonarqube-project-scanner/) Java application.
+Docker container with SonarQube 9.9.8 Community Edition, Gradle 7.6, and SonarQube Scanner CLI 6.0.0 for code analysis. All project management and scanning is handled by the [SonarQube Project Scanner](https://github.com/jpruiz114/sonarqube-project-scanner) Java application.
 
 ## Build
 
@@ -39,7 +39,7 @@ docker push jpruiz114/sonarqube-with-sonarscanner:9.9.8
 
 ## Usage
 
-Use the [SonarQube Project Scanner](../sonarqube-project-scanner/) Java application to:
+Use the [SonarQube Project Scanner](https://github.com/jpruiz114/sonarqube-project-scanner) Java application to:
 - Create projects and generate authentication tokens
 - Scan your code and generate reports  
 - Export analysis results to CSV files
