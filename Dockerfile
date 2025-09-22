@@ -23,10 +23,11 @@ RUN mkdir /downloads/sonarqube -p \
 
 ENV PATH="$PATH:/opt/sonar-scanner/bin"
 
-# Memory configuration for SonarQube and Elasticsearch
+# SonarQube memory configuration (high-performance settings)
 ENV SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true
-ENV ES_JAVA_OPTS="-Xms1g -Xmx3g"
-ENV SONAR_JAVA_OPTS="-Xms512m -Xmx1g"
+ENV SONAR_WEB_JAVAOPTS="-Xmx4096m -Xms128m -XX:+HeapDumpOnOutOfMemoryError"
+ENV SONAR_CE_JAVAOPTS="-Xmx16g -Xms128m -XX:+HeapDumpOnOutOfMemoryError"
+ENV SONAR_SEARCH_JAVAOPTS="-Xms512m -Xmx512m -XX:+HeapDumpOnOutOfMemoryError"
 
 # Switch back to sonarqube user for security
 USER sonarqube
